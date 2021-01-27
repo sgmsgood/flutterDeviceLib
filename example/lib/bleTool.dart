@@ -9,8 +9,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:qnsdk/qnsdk.dart';
 
-class BleTool
-    implements
+class BleTool implements
         QNBleStateListener,
         QNBleDeviceDiscoveryListener,
         QNBleConnectionChangeListener,
@@ -32,19 +31,19 @@ class BleTool
 
   void startScan() {
     qnApi.startBleDeviceDiscovery().then((result) {
-      print("startBleDeviceDiscovery ${result.errorCode}");
+      print("@!!startBleDeviceDiscovery ${result.errorCode}");
     });
   }
 
   void stopScan() {
     qnApi.stopBleDeviceDiscovery().then((result) {
-      print("stopBleDeviceDiscovery ${result.errorCode}");
+      print("@!!stopBleDeviceDiscovery ${result.errorCode}");
     });
   }
 
   void connect(QNBleDevice device, QNUser user) {
     qnApi.connectDevice(device, user).then((result) {
-      print("connectDevice ${result.errorCode}");
+      print("@!!connectDevice ${result.errorCode}");
       if (result.errorCode != 0) {
         //Please handle the error by yourself
       }
@@ -81,7 +80,7 @@ class BleTool
     String configFileContent = await rootBundle.loadString('data/123456789.qn');
     qnApi
         .initSDK('123456789', configFileContent)
-        .then((result) => print('initSDK ${result.errorCode}'));
+        .then((result) => print('@!!initSDK ${result.errorCode}'));
 
     _setListener();
   }
@@ -89,14 +88,14 @@ class BleTool
   void _setListener() async {
     qnApi
         .setBleStateListener(this)
-        .then((result) => print('setBleStateListener ${result.errorCode}'));
+        .then((result) => print('@!!setBleStateListener ${result.errorCode}'));
     qnApi.setBleDeviceDiscoveryListener(this).then(
-        (result) => print('setBleDeviceDiscoveryListener ${result.errorCode}'));
+        (result) => print('@!!setBleDeviceDiscoveryListener ${result.errorCode}'));
     qnApi.setBleConnectionChangeListener(this).then((result) =>
-        print('setBleConnectionChangeListener ${result.errorCode}'));
+        print('@!!setBleConnectionChangeListener ${result.errorCode}'));
     qnApi
         .setScaleDataListener(this)
-        .then((result) => print('setScaleDataListener ${result.errorCode}'));
+        .then((result) => print('@!!setScaleDataListener ${result.errorCode}'));
   }
 
   void _setSdkConfig() async {

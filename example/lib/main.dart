@@ -31,6 +31,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _bleTool = BleTool();
+
   var _curEvent = EventState.Unknow;
   var _buttonText = 'start scan';
   var _stateText = 'pending';
